@@ -1,19 +1,20 @@
-import React from 'react';
-import s from './content.module.css';
-import MyPosts from './MyPosts/MyPost';
+import React from "react";
+import s from "./content.module.css";
+import MyPosts from "./MyPosts/MyPost";
+import Profile from "./Profile/profile";
 
-function Content() {
-    return (
-      <div>
-        <img src="https://cdn.promodj.com/afs/0083e35cd53af4774a34567b8c00bbeb12:d18f81"></img>
 
-        <div>
-          ava + description
-        </div>
+function Content(props) {
+  
+  return (
+    <div>
+      <img src="https://cdn.promodj.com/afs/0083e35cd53af4774a34567b8c00bbeb12:d18f81"></img>
 
-        <MyPosts />
-      </div>
-    )
+      <Profile />
+      <MyPosts PostData={props.state.PostData}/>
+      
+    </div>
+  );
 }
 
 export default Content;

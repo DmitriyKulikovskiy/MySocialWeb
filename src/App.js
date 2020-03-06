@@ -11,19 +11,20 @@ import Friends from "./components/Nav/N.Friends/Friends";
 import Settings from "./components/Nav/N.Settings/Settings";
 import { Route, BrowserRouter } from "react-router-dom";
 
-function MyWeb() {
+
+
+function MyWeb(props) {
   return (
     <BrowserRouter>
       <div className="main-wrapper">
-        
           <Header />
           <Nav />
         <div className="main-wrapper-content">
-          <Route path='/content' component={Content}/>
-          <Route path='/Messages' component={Messages}/>
-          <Route path='/Music' component={Music}/>
-          <Route path='/Friends' component={Friends}/>
-          <Route path='/Settings' component={Settings}/>
+          <Route path='/content' render={() => <Content state={props.state.postPage} />}/>
+          <Route path='/Messages' render={() => <Messages state={props.state.dialogsPage} />}/>
+          <Route path='/Music' render={() => <Music />}/>
+          <Route path='/Friends' render={() => <Friends />}/>
+          <Route path='/Settings' render={() => <Settings />}/>
         </div>
 
       </div>

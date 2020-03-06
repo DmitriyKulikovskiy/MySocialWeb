@@ -1,9 +1,12 @@
 import React from 'react';
 import s from './nav.module.css';
 import { NavLink } from 'react-router-dom';
+import Messages from './N.Messages/Messages';
 
 
 function Nav() {
+    
+
     return (
         <div className={s.nav}>
 
