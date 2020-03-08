@@ -12,21 +12,22 @@ function MyPosts(props) {
 
   // add post Element
   let addPost = () => {
-    props.addPost();
+    props.dispatch({type: 'ADD-POST'});
   };
 
   //FLUX
   let onPostChange = () => {
     let text = NewPostElement.current.value;
-    props.updateNewPostText(text);
+    props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text});
+    
   }
-
+ 
   return (
     <div>
       <div>
         My posts
         <div>
-          <textarea onChange={onPostChange} ref={NewPostElement} className={s.PostText} value={props.NewMessage}></textarea>
+          <textarea onChange={onPostChange} ref={NewPostElement} className={s.PostText} value={props.NewPostText}></textarea>
           <button onClick={addPost}>New Post</button>
         </div>
         {PostD}
@@ -34,5 +35,6 @@ function MyPosts(props) {
     </div>
   );
 }
+
 
 export default MyPosts;

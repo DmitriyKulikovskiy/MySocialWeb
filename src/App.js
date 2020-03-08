@@ -22,14 +22,12 @@ function MyWeb(props) {
           <Nav />
         <div className="main-wrapper-content">
           <Route path='/content' render={() => <Content  
-            addPost={props.addPost} 
-            state={props.state.postPage} 
-            updateNewPostText={props.updateNewPostText}/>}/>
+            dispatch={props.dispatch} 
+            state={props.state.postPage} />}/>
 
           <Route path='/Messages' render={() => <Messages 
             state={props.state.dialogsPage} 
-            sendNewMessage={props.sendNewMessage}
-            updateNewMessage={props.updateNewMessage}/>}/>
+            dispatch={props.dispatch}/>}/>
           <Route path='/Music' render={() => <Music />}/>
           <Route path='/Friends' render={() => <Friends />}/>
           <Route path='/Settings' render={() => <Settings />}/>

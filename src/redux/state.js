@@ -1,9 +1,14 @@
 
-let reRenderTree = () => {
-  // subscribe - reRenderTree
-}
+let store = {
+  _reRenderTree() {
+    // subscribe - reRenderTree
+  },
+  subscribe(observer) { // observer -> pattern
+    this._reRenderTree = observer;
+  },
 
-let state = { // server's part
+ //--------------------------------------------------------------------
+  _state: { // server's part
   dialogsPage: {
     DialogsData: [
       { id: 1, Name: "John Price" },
@@ -26,51 +31,75 @@ let state = { // server's part
       { id: 1, message: "Hi, This is very good job!", like: 20 },
       { id: 2, message: "Oh, this was pretty cool", like: 10 }
     ],
-    NewPostText: "go to hell"
+    NewPostText: "Darkness"
   }
-};
+  },
+  getState() {
+    return this._state;
+  },
+  //--------------------------------------------------------------------
+  dispatch(action) {  //action - object  {type: 'ADD-POST'}
+  debugger;
+    if(action.type === 'ADD-POST') { // post's dispatch
+      let newPost = {
+        id: 3,
+        message: this._state.postPage.NewPostText,
+        like: 0
+      };
+      
+      this._state.postPage.PostData.push(newPost);
+      this._state.postPage.NewPostText = ''; // clear text-area
+      this._reRenderTree(this._state); // we use state as method to send it to 'render function'
+      
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        this._state.postPage.NewPostText = action.newText;
+        this._reRenderTree(this._state);
+    }
 
-window.state = state;
-//---------------------------------------------------------------------------------------------------
-export const addPost = () => { // function add post
-  let newPost = {
-    id: 3,
-    message: state.postPage.NewPostText,
-    like: 0
-  };
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if(action.type === 'SEND-MESSAGE') { // message's dispatch
+      let newMessage = {
+       message: this._state.dialogsPage.NewMessage
+      }
   
-  state.postPage.PostData.push(newPost);
-  state.postPage.NewPostText = ''; // clear text-area
+      this._state.dialogsPage.MessagesData.push(newMessage);
+      this._state.dialogsPage.NewMessage = '';
+      this._reRenderTree(this._state);
 
-  reRenderTree(state); // we use state as method to send it to 'render function'
-};
-
-export let updateNewPostText = (NewText) => { //FLUX func
-
-  state.postPage.NewPostText = NewText;
-  reRenderTree(state);
-}
-//---------------------------------------------------------------------------------------------------------------
-export const sendNewMessage = () => {  //send message
-  let newMessage = {
-    message: state.dialogsPage.NewMessage
+    } else if (action.type === 'UPDATE-NEW-MESSAGE') {
+      this._state.dialogsPage.NewMessage = action.newMessage;
+      this._reRenderTree(this._state);
+    }
   }
-
-  state.dialogsPage.MessagesData.push(newMessage);
-  state.dialogsPage.NewMessage = '';
-  reRenderTree(state);
-};
-
-export let updateNewMessage = (newMessage) => {
-  state.dialogsPage.NewMessage = newMessage;
-  reRenderTree(state);
-} 
-
-export const subscribe = (observer) => { // observer -> pattern
-  reRenderTree = observer;
 }
 
-
-export default state;
+export default store;
 
 

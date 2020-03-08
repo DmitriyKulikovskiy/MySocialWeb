@@ -16,22 +16,22 @@ function Messages(props) {
 
   //create func send message from state
   let sendMessage = () => {
-    props.sendNewMessage();
+    props.dispatch({type: 'SEND-MESSAGE'});
   }
 
   //textarea change and send info to state -> UL
   let onMessageChange = () => {
     let text = NewMessageElement.current.value;
-    props.updateNewMessage(text);
+    props.dispatch({type: 'UPDATE-NEW-MESSAGE', newMessage: text});
   }
-
+  debugger;
   return (
     <BrowserRouter>
       <div className={s.dialogs}>
         <div>{DialogsD} </div>
 
         <div> {MessageD}
-          <textarea onChange={onMessageChange}  ref={NewMessageElement}></textarea>
+          <textarea onChange={onMessageChange}  ref={NewMessageElement} value={props.newMessage}></textarea>
           <button onClick={sendMessage}>Send</button>
         </div>
       </div>
