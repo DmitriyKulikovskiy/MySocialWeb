@@ -11,7 +11,7 @@ function Content(props) {
       <img src="https://cdn.promodj.com/afs/0083e35cd53af4774a34567b8c00bbeb12:d18f81"></img>
 
       <Profile />
-      <MyPosts PostData={props.state.PostData}/>
+      <MyPosts PostData={props.state.PostData} addPost={props.addPost} NewPostText={props.state.NewPostText} updateNewPostText={props.updateNewPostText} />
       
     </div>
   );
