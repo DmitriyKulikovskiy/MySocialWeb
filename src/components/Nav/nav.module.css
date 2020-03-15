@@ -12,11 +12,15 @@
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.nav .box .item_button {
+    cursor: pointer;
 }
 
 .item_button:hover{
     color: rgba(0,0,0,0.4);
-    cursor:pointer;
 }    
 
 .up {

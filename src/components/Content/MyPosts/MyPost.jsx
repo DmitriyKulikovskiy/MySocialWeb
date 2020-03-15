@@ -1,33 +1,34 @@
 import React from "react";
 import s from "./MyPost.module.css";
 import Post from "./Post/Post";
+import {ActionCreatorAddPost,ActionCreatorUpdatePost} from '../../../redux/postPage-reducer'
 
-function MyPosts(props) {
-  let PostD = props.PostData.map(p => (
+const MyPosts = (props) => {
+  let state = props.store.getState().postPage;
+
+  let PostD = state.PostData.map(p => (
     <Post id={p.id} message={p.message} like={p.like} />
   ));
 
-  // add post REF (link)
-  let NewPostElement = React.createRef();
+  let NewPostText = state.NewPostText;
 
   // add post Element
   let addPost = () => {
-    props.dispatch({type: 'ADD-POST'});
+    props.dispatch(ActionCreatorAddPost());
   };
 
   //FLUX
-  let onPostChange = () => {
-    let text = NewPostElement.current.value;
-    props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text});
-    
-  }
+  let onPostChange = (e) => {
+    let text = e.target.value;
+    props.dispatch(ActionCreatorUpdatePost(text));
+  };
  
   return (
     <div>
       <div>
         My posts
         <div>
-          <textarea onChange={onPostChange} ref={NewPostElement} className={s.PostText} value={props.NewPostText}></textarea>
+          <textarea onChange={onPostChange} className={s.PostText} value={NewPostText}></textarea>
           <button onClick={addPost}>New Post</button>
         </div>
         {PostD}

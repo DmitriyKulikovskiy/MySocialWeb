@@ -23,10 +23,10 @@ function MyWeb(props) {
         <div className="main-wrapper-content">
           <Route path='/content' render={() => <Content  
             dispatch={props.dispatch} 
-            state={props.state.postPage} />}/>
+            store={props.store} />}/>
 
           <Route path='/Messages' render={() => <Messages 
-            state={props.state.dialogsPage} 
+            store={props.store} 
             dispatch={props.dispatch}/>}/>
           <Route path='/Music' render={() => <Music />}/>
           <Route path='/Friends' render={() => <Friends />}/>

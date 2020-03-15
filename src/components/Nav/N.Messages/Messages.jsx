@@ -3,36 +3,42 @@ import s from "./Messages.module.css";
 import MessagesItem from "./MessageItem/MessageItem";
 import DialogsItem from "./DialogsItem/DialogsItem";
 import { BrowserRouter } from "react-router-dom";
+import {ActionCreatorUpdateMessage, ActionCreatorAddMessage} from "../../../redux/dialogsPage-reducer"
 
 
 function Messages(props) {
+ 
+  let state = props.store.getState().dialogsPage;
 
-
-  let DialogsD = props.state.DialogsData.map(d => <DialogsItem id={d.id} Name={d.Name} />);
-  let MessageD = props.state.MessagesData.map(m => <MessagesItem message={m.message} />);
-
-  //create link
-  let NewMessageElement = React.createRef();
+  let DialogsD = state.DialogsData.map(d => <DialogsItem id={d.id} Name={d.Name} />);
+  let MessageD = state.MessagesData.map(m => <MessagesItem message={m.message} />);
+  let NewMessage = state.NewMessage;
 
   //create func send message from state
   let sendMessage = () => {
-    props.dispatch({type: 'SEND-MESSAGE'});
+    props.store.dispatch(ActionCreatorAddMessage());
   }
 
-  //textarea change and send info to state -> UL
-  let onMessageChange = () => {
-    let text = NewMessageElement.current.value;
-    props.dispatch({type: 'UPDATE-NEW-MESSAGE', newMessage: text});
+  //textarea changes and sends info to state -> UL
+  let onMessageChange = (e) => {
+    let text = e.target.value;
+    props.store.dispatch(ActionCreatorUpdateMessage(text));
   }
-  debugger;
+  
+  
   return (
     <BrowserRouter>
       <div className={s.dialogs}>
         <div>{DialogsD} </div>
 
         <div> {MessageD}
-          <textarea onChange={onMessageChange}  ref={NewMessageElement} value={props.newMessage}></textarea>
+          <div>
+          <textarea onChange={onMessageChange}  value={NewMessage}></textarea>
+          </div>
+          
+          <div>
           <button onClick={sendMessage}>Send</button>
+          </div>
         </div>
       </div>
     </BrowserRouter>
