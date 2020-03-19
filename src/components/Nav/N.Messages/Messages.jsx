@@ -3,26 +3,24 @@ import s from "./Messages.module.css";
 import MessagesItem from "./MessageItem/MessageItem";
 import DialogsItem from "./DialogsItem/DialogsItem";
 import { BrowserRouter } from "react-router-dom";
-import {ActionCreatorUpdateMessage, ActionCreatorAddMessage} from "../../../redux/dialogsPage-reducer"
 
 
 function Messages(props) {
- 
-  let state = props.store.getState().dialogsPage;
+  let state = props.dialogsPage;
 
   let DialogsD = state.DialogsData.map(d => <DialogsItem id={d.id} Name={d.Name} />);
   let MessageD = state.MessagesData.map(m => <MessagesItem message={m.message} />);
   let NewMessage = state.NewMessage;
 
-  //create func send message from state
-  let sendMessage = () => {
-    props.store.dispatch(ActionCreatorAddMessage());
+
+  let OnSendMessage = () => {
+    props.sendMessage();
   }
 
-  //textarea changes and sends info to state -> UL
-  let onMessageChange = (e) => {
+
+  let OnMessageChange = (e) => {
     let text = e.target.value;
-    props.store.dispatch(ActionCreatorUpdateMessage(text));
+    props.onMessageChange(text);
   }
   
   
@@ -33,11 +31,11 @@ function Messages(props) {
 
         <div> {MessageD}
           <div>
-          <textarea onChange={onMessageChange}  value={NewMessage}></textarea>
+          <textarea onChange={OnMessageChange}  value={NewMessage}></textarea>
           </div>
           
           <div>
-          <button onClick={sendMessage}>Send</button>
+          <button onClick={OnSendMessage}>Send</button>
           </div>
         </div>
       </div>
