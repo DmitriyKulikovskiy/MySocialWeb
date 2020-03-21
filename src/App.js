@@ -10,6 +10,8 @@ import Friends from "./components/Nav/N.Friends/Friends";
 import Settings from "./components/Nav/N.Settings/Settings";
 import { Route } from "react-router-dom";
 import MessagesContainer from "./components/Nav/N.Messages/message_container";
+import UsersContainer from "./components/Nav/N.Users/Users-container";
+
 
 
 
@@ -24,6 +26,7 @@ function MyWeb() {
         <div className="main-wrapper-content">
           <Route path='/content' render={() => <Content />}/>
           <Route path='/Messages' render={() => <MessagesContainer/>}/>
+          <Route path='/Users' render={() => <UsersContainer />}/>
           <Route path='/Music' render={() => <Music />}/>
           <Route path='/Friends' render={() => <Friends />}/>
           <Route path='/Settings' render={() => <Settings />}/>
