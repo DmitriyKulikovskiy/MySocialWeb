@@ -10,7 +10,7 @@ function Nav() {
         <div className={s.nav}>
             <div className={s.box}>
                 <img src="https://s3.us-east-2.amazonaws.com/upload-icon/uploads/icons/png/16931781451548233622-256.png"/>
-                <NavLink to="Content" className={s.item_button} activeClassName={s.ActiveLink}>Profile</NavLink>
+                <NavLink to="profile" className={s.item_button} activeClassName={s.ActiveLink}>Profile</NavLink>
             </div>
                     
             <div className={s.box}>

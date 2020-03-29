@@ -1,3 +1,21 @@
-.Boost {
+.container {
     padding: 5px;
+}
+
+.contactsBox {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.item {
+    font-weight: bold;
+}
+
+.network {
+    color: orangered;
+}
+
+.nameNetwork {
+    color: black;
+    font-style: italic;
 }
