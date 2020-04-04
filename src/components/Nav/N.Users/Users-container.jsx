@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import {  follow, unfollow ,setFollowingLoaderAC, currentPageAC, getUser } from "../../../redux/users-reducer";
 import Users from './Users';
 import MainLoader from "../../Commons/MainLoader/MainLoader";
+import { withAuthRedirect } from "../../HOC/withAuthRedirect";
+import { compose } from "redux";
 
 
 
@@ -50,8 +52,10 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow ,currentPageAC, setFollowingLoaderAC, getUser })(UsersComponent);
+export default compose(
 
+    connect(mapStateToProps, {follow, unfollow ,currentPageAC, setFollowingLoaderAC, getUser })
+)(UsersComponent);
 
 
 

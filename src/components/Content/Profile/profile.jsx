@@ -1,16 +1,20 @@
 import React from 'react';
 import s from './Profile.module.css';
 import MainLoader from '../../Commons/MainLoader/MainLoader';
+import ProfileStatus from './profile-status/profile-status'
+
 
 function Profile(props) {
   
   if (!props.profile) {
     return <MainLoader />
   }
-
   return (
     <div className={s.container}>
       <img src={props.profile.photos.large} />
+
+      <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+      
       <div>{props.profile.fullName}</div>
 
       <div>{props.profile.aboutMe}</div>

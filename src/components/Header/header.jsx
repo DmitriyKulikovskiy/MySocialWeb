@@ -9,7 +9,7 @@ function Header(props) {
         <header>
             <div className={s.logo}>Dark Space</div>
             <div className={s.login}>
-                {props.isAuth   ? props.login 
+                {props.isAuth   ? <div>{props.login} <button onClick={props.logOut}>LogOut</button></div>
                                 : <NavLink to={'/login'}>Login In </NavLink>}
             </div>
         </header>
