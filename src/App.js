@@ -4,7 +4,7 @@ import Nav from "./components/Nav/nav";
 import Music from "./components/Nav/N.Music/Music";
 import Friends from "./components/Nav/N.Friends/Friends";
 import Settings from "./components/Nav/N.Settings/Settings";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, HashRouter } from "react-router-dom";
 import MessagesContainer from "./components/Nav/N.Messages/message_container";
 import HeaderContainer from "./components/Header/header-container";
 import Login from "./components/Login/Login";
@@ -60,12 +60,14 @@ const mapStateToProps = (state) => ({
 
  let AppContainer = compose(withRouter, connect(mapStateToProps, {initializeApp}))(MyWeb); 
 
+
+// !!! use <BrowserRouter /> (for gh page)
 const AppWeb = (props) => {
-    return <BrowserRouter>
-         <Provider store={store}>
-             <AppContainer />
-         </Provider>
-     </BrowserRouter>
+    return <HashRouter> 
+              <Provider store={store}>
+                  <AppContainer />
+              </Provider>
+            </HashRouter>
  }
 
 
