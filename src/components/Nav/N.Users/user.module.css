@@ -6,3 +6,14 @@
 .selectedPage {
     font-weight: bold;
 }
+
+.pageBox {
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.pageBox span {
+    border: 1px solid black;
+    margin-left: 2px;
+    margin-right: 2px;
+}

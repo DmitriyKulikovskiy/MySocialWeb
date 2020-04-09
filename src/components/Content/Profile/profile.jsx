@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './Profile.module.css';
 import MainLoader from '../../Commons/MainLoader/MainLoader';
-import ProfileStatus from './profile-status/profile-status'
+import ProfileStatusHook from './profile-status/porfile-status-with-hooks';
+// import ProfileStatus from './profile-status/profile-status'
 
 
 function Profile(props) {
@@ -13,7 +14,7 @@ function Profile(props) {
     <div className={s.container}>
       <img src={props.profile.photos.large} />
 
-      <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+      <ProfileStatusHook status={props.status} updateStatus={props.updateStatus}/>
       
       <div>{props.profile.fullName}</div>
 

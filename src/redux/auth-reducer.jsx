@@ -29,37 +29,32 @@ const AuthReducer = (state = initialState, action) => {
 export const setAuthAC = (userId, email, login, isAuth) => ({ type: "SET_AUTH", payload: {userId, email, login,isAuth} });
 
 
-export const getAuth = () => 
- (dispatch) => {
-   return authAPI.authMe().then(response => {
+export const getAuth = () => async (dispatch) => {
+  let response =  await authAPI.authMe();
       if (response.data.resultCode === 0) {
           let {id, login, email} = response.data.data;
           dispatch(setAuthAC(id, email, login, true));
       }
-  });
 }
 
 
 //API thunks of LOGIN/LOGOUT
-export const login = (login, password, rememberMe) => dispatch => {
+export const login = (login, password, rememberMe) =>  async (dispatch) => {
 
-
-  authAPI.login(login, password, rememberMe).then(response => {
+  let response = await authAPI.login(login, password, rememberMe)
     if (response.data.resultCode === 0) {
       dispatch(setAuthAC());
     } else {
       let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
       dispatch(stopSubmit("login", {_error: message}));
     }	            
-  });
 };
 
-export const logOut = () => dispatch => {
-  authAPI.logOut().then(response => {
+export const logOut = () =>  async (dispatch) => {
+  let response = await authAPI.logOut()
     if (response.data.resultCode === 0) {
       dispatch(setAuthAC(null,null,null,false));
     }
-  });
 };
 
 

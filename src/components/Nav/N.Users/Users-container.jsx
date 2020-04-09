@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import {  follow, unfollow ,setFollowingLoaderAC, currentPageAC, getUser } from "../../../redux/users-reducer";
 import Users from './Users';
 import MainLoader from "../../Commons/MainLoader/MainLoader";
-import { withAuthRedirect } from "../../HOC/withAuthRedirect";
 import { compose } from "redux";
+import {getUsers , getPageSize, getTotalUserCounter, getCurrentPage, getIsLoading,getFollowingInProgress} from "../../../redux/users-selector"
 
 
 
@@ -43,12 +43,12 @@ class UsersComponent extends React.Component {
 let mapStateToProps = (state) => {
  
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUserCounter: state.usersPage.totalUserCounter,
-        currentPage: state.usersPage.currentPage,
-        isLoading: state.usersPage.isLoading,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUserCounter: getTotalUserCounter(state) ,
+        currentPage: getCurrentPage(state),
+        isLoading: getIsLoading(state),
+        followingInProgress: getFollowingInProgress(state) 
     }
 }
 

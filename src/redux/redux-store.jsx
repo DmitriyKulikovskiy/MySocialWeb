@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import dialogsPageReducer from "./dialogsPage-reducer";
 import postPageReducer from "./postPage-reducer";
 import UsersReducer from "./users-reducer";
@@ -17,7 +17,11 @@ let reducers = combineReducers({
     app: AppReducer
 });
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+//tool from Chrome 'redux'
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+
+// let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 export default store;
 

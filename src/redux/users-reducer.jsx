@@ -1,4 +1,5 @@
 import { usersAPI } from "../API/api";
+import {followUnfollowMethodItem} from "./user-helper/follow-unfollow"
 
 
 const FOLLOW = "FOLLOW";
@@ -23,22 +24,12 @@ const UsersReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
           ...state,
-          users: state.users.map( u =>  {
-              if (u.id === action.userId) {
-                  return {...u, followed: true}
-              }
-              return u;
-          })
+          users: followUnfollowMethodItem(state.users, action.userId, 'id', {followed: true })
       }
   case UNFOLLOW:
       return {
           ...state,
-          users: state.users.map( u =>  {
-              if (u.id === action.userId) {
-                  return {...u, followed: false}
-              }
-              return u;
-          })
+          users: followUnfollowMethodItem(state.users, action.userId, 'id', {followed: false })
       }
     case USERS:
       return {
@@ -88,41 +79,36 @@ export const setFollowingLoaderAC = (isLoading, userId) => ({ type: "FOLLOW_STAT
 
 
 export const getUser = (currentPage, pageSize) => {
-
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(setIsLoadingAC(true));
-    usersAPI.getUsers(currentPage, pageSize).then(data => {
-      dispatch(setIsLoadingAC(false));
-      dispatch(setUserAC(data.items)); //use debugger to know current route of response
-      dispatch(totalUserCounterAC(data.totalCount));
-
-    });
+    dispatch(currentPageAC(currentPage));
+    let data = await usersAPI.getUsers(currentPage, pageSize);
+    dispatch(setIsLoadingAC(false));
+    dispatch(setUserAC(data.items)); //use debugger to know current route of response
+    dispatch(totalUserCounterAC(data.totalCount));
   };
 };
 
+const followUnfollowMethod = async (dispatch,userId,ApiMethod,actionCreator) => {
+  dispatch(setFollowingLoaderAC(true, userId));
+  let response = await ApiMethod(userId);
+  if (response.data.resultCode == 0) {
+    dispatch(actionCreator(userId));
+  } 
+  dispatch(setFollowingLoaderAC(false, userId));
+}
+
 export const follow = (userId) => {
-  return (dispatch) => {
-    dispatch(setFollowingLoaderAC(true, userId));
-    usersAPI.follow(userId).then(response => {
-      if (response.data.resultCode == 0) {
-        dispatch(followSuccess(userId));
-      } 
-      dispatch(setFollowingLoaderAC(false, userId));
-    });
+  return async (dispatch) => {
+    followUnfollowMethod(dispatch,userId,usersAPI.follow.bind(usersAPI), followSuccess);
   };
 };
 
 export const unfollow = (userId) => {
 
-  return (dispatch) => {
-    dispatch(setFollowingLoaderAC(true, userId));
-    usersAPI.unfollow(userId).then(response => {
-      if (response.data.resultCode == 0) {
-        dispatch(unfollowSuccess(userId));
-      }
-      dispatch(setFollowingLoaderAC(false, userId));
-    });
-  };
+  return async (dispatch) => {
+    followUnfollowMethod(dispatch,userId,usersAPI.unfollow.bind(usersAPI),unfollowSuccess);
+  }
 };
 
 

@@ -3,7 +3,6 @@ import Content from "./content";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import {getUserAPI} from './../../redux/postPage-reducer'
-import { withAuthRedirect } from "../HOC/withAuthRedirect";
 import { compose } from "redux";
 import {getStatus,updateStatus} from './../../redux/postPage-reducer'
 
@@ -40,6 +39,5 @@ let mapStateToProps = state => ({
 
 export default compose(
   withRouter,
-
   connect(mapStateToProps, { getUserAPI, getStatus, updateStatus })
 )(ProfileContainer);
