@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/MySocialWeb/static/css/main.04591c68.chunk.css",
+    "main.js": "/MySocialWeb/static/js/main.5d32b41f.chunk.js",
+    "main.js.map": "/MySocialWeb/static/js/main.5d32b41f.chunk.js.map",
+    "runtime-main.js": "/MySocialWeb/static/js/runtime-main.d812973c.js",
+    "runtime-main.js.map": "/MySocialWeb/static/js/runtime-main.d812973c.js.map",
+    "static/js/2.abf7426f.chunk.js": "/MySocialWeb/static/js/2.abf7426f.chunk.js",
+    "static/js/2.abf7426f.chunk.js.map": "/MySocialWeb/static/js/2.abf7426f.chunk.js.map",
+    "static/css/3.c9f65675.chunk.css": "/MySocialWeb/static/css/3.c9f65675.chunk.css",
+    "static/js/3.4c32940f.chunk.js": "/MySocialWeb/static/js/3.4c32940f.chunk.js",
+    "static/js/3.4c32940f.chunk.js.map": "/MySocialWeb/static/js/3.4c32940f.chunk.js.map",
+    "static/css/4.c93af2f7.chunk.css": "/MySocialWeb/static/css/4.c93af2f7.chunk.css",
+    "static/js/4.761450fb.chunk.js": "/MySocialWeb/static/js/4.761450fb.chunk.js",
+    "static/js/4.761450fb.chunk.js.map": "/MySocialWeb/static/js/4.761450fb.chunk.js.map",
+    "index.html": "/MySocialWeb/index.html",
+    "precache-manifest.081e8bfd9e8c5e756e5b245dd68571ae.js": "/MySocialWeb/precache-manifest.081e8bfd9e8c5e756e5b245dd68571ae.js",
+    "service-worker.js": "/MySocialWeb/service-worker.js",
+    "static/css/3.c9f65675.chunk.css.map": "/MySocialWeb/static/css/3.c9f65675.chunk.css.map",
+    "static/css/4.c93af2f7.chunk.css.map": "/MySocialWeb/static/css/4.c93af2f7.chunk.css.map",
+    "static/css/main.04591c68.chunk.css.map": "/MySocialWeb/static/css/main.04591c68.chunk.css.map",
+    "static/js/2.abf7426f.chunk.js.LICENSE.txt": "/MySocialWeb/static/js/2.abf7426f.chunk.js.LICENSE.txt",
+    "static/js/4.761450fb.chunk.js.LICENSE.txt": "/MySocialWeb/static/js/4.761450fb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d812973c.js",
+    "static/js/2.abf7426f.chunk.js",
+    "static/css/main.04591c68.chunk.css",
+    "static/js/main.5d32b41f.chunk.js"
+  ]
+}
