@@ -32,10 +32,9 @@ class UsersComponent extends React.Component {
                 unfollow={this.props.unfollow} 
                 follow={this.props.follow}
                 onPageChange={this.onPageChange} //without props because it is class's func
-                followingInProgress={this.props.followingInProgress}
-                
-        /> 
-    </> }
+                followingInProgress={this.props.followingInProgress}   
+            /> 
+        </>}   
 }
 
 

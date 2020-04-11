@@ -46,7 +46,7 @@ export const login = (login, password, rememberMe) =>  async (dispatch) => {
       dispatch(setAuthAC());
     } else {
       let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-      dispatch(stopSubmit("login", {_error: message}));
+      dispatch(stopSubmit("login", {_error: message})); // underline global error
     }	            
 };
 

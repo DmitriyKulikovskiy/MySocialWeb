@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import s from "./../Login/login-form.module.css"
-import { useEffect } from 'react';
+
 
 const LoginForm = (props) => {
     return (
@@ -22,7 +22,7 @@ const LoginForm = (props) => {
                        component={Input}/>
             </div>
             <div>
-                <Field component={Input} name={"rememberMe"} type={"checkbox"}/> remember me
+                <Field validate={[required]} component={Input} name={"rememberMe"} type={"checkbox"} /> remember me
             </div>
             { props.error && <div className={s.formSummaryError}>
                 {props.error}
@@ -44,7 +44,7 @@ const Login = (props) => {
     }
 
     if (props.isAuth) {
-        return <Redirect to={"/profile"} />
+        return <Redirect to={"/Profile"} />
     }
 
     return <div>

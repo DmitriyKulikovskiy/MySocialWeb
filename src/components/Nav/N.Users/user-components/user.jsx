@@ -15,7 +15,7 @@ export const User = ({users,follow,unfollow,followingInProgress,onPageChange,cur
             </div>
             
             <div>
-            <FollowUnfollow u={u} unfollow={unfollow} follow={follow} followingInProgress={followingInProgress}/>
+                <FollowUnfollow u={u} unfollow={unfollow} follow={follow} followingInProgress={followingInProgress}/>
             </div>
 
             <div>{u.name}</div>

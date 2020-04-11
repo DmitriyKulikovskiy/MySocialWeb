@@ -11,6 +11,10 @@
     font-weight: bold;
 }
 
+.network .nameNetwork{
+    display: inline-block;
+}
+
 .network {
     color: orangered;
 }
@@ -18,4 +22,15 @@
 .nameNetwork {
     color: black;
     font-style: italic;
+}
+
+.contacts::first-line {
+    font-weight: bold;
+}
+
+.formSummaryError {
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+    border: 2px solid red;
 }

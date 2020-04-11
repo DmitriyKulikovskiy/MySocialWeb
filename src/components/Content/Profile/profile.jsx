@@ -2,45 +2,98 @@ import React from 'react';
 import s from './Profile.module.css';
 import MainLoader from '../../Commons/MainLoader/MainLoader';
 import ProfileStatusHook from './profile-status/porfile-status-with-hooks';
-// import ProfileStatus from './profile-status/profile-status'
+import photoAbsence from './../../../images/user.png'
+import { useState } from 'react';
+import ProfileInfoEdit from './profileDataForm';
 
 
-function Profile(props) {
+
+
+function Profile({ profile, savePhoto, isOwner, status, updateStatus, saveProfile}) {
+
+  //hook edit mode
+  const [editMode,setEditMode ] = useState(false);
   
-  if (!props.profile) {
+  if (!profile) {
     return <MainLoader />
   }
+
+  const SelectMainPhoto = (e) => {
+    if(e.target.files.length) {
+        savePhoto(e.target.files[0])
+    }
+  }
+
+  const onSubmit = (dataForm) => {
+    saveProfile(dataForm).then(
+      () => {
+        setEditMode(false);
+      }
+    )
+    
+   
+  }
+
   return (
     <div className={s.container}>
-      <img src={props.profile.photos.large} />
+      <img src={profile.photos.large || photoAbsence} />
+      {isOwner && <input type={'file'} onChange={SelectMainPhoto}/>}
 
-      <ProfileStatusHook status={props.status} updateStatus={props.updateStatus}/>
-      
-      <div>{props.profile.fullName}</div>
+      <ProfileStatusHook status={status} updateStatus={updateStatus}/>
 
-      <div>{props.profile.aboutMe}</div>
-
-      <div className={s.contactsBox} > 
-        <div className={s.item}>Social Networks:</div>
-        <div className={s.network}> <span className={s.nameNetwork}>Facebook: </span>{props.profile.contacts.facebook}</div>
-        <div className={s.network}> <span className={s.nameNetwork}>Website: </span>{props.profile.contacts.website}</div>
-        <div className={s.network}> <span className={s.nameNetwork}>VKontakte: </span>{props.profile.contacts.vk}</div>
-        <div className={s.network}> <span className={s.nameNetwork}>Twitter: </span>{props.profile.contacts.twitter}</div>
-        <div className={s.network}> <span className={s.nameNetwork}>Instagram: </span>{props.profile.contacts.instagram}</div>
-        <div className={s.network}> <span className={s.nameNetwork}>YouTube: </span>{props.profile.contacts.youtube}</div>
-        <div className={s.network}> <span className={s.nameNetwork}>GitHub: </span>{props.profile.contacts.github}</div>
-        <div className={s.network}> <span className={s.nameNetwork}>MainLink: </span>{props.profile.contacts.mainlink}</div>
-      </div>
-
-      <div>{props.profile.lookingForAJob}</div>
-
-      <div>{props.profile.lookingForAJobDescription}</div>
-      
+      {editMode ? <ProfileInfoEdit initialValues={profile} profile={profile} onSubmit={onSubmit}/>
+                : <ProfileInfo  useEditMode={() => {setEditMode(true)}} profile={profile} isOwner={isOwner} />}
     </div>
   );
 }
 
+
+const ProfileInfo = ({profile, isOwner,useEditMode}) => {
+  return <div className={s.contactsBox}>
+    {isOwner && <div><button onClick={useEditMode}>Edit</button></div>}
+      <div>ID: 
+        <span>{profile.userId}</span>
+      </div>
+
+      <div>Name: 
+        <span>{profile.fullName}</span>
+      </div>
+  
+      <div>
+        <b>Looking for a job</b>: {profile.lookingForAJob ? "yes" : "no"}
+      </div>
+
+      {profile.lookingForAJob &&
+      <div>
+        <b>My professional skills</b>: {profile.lookingForAJobDescription}
+      </div>}
+
+      <div>
+        <b>About me</b>: {profile.aboutMe}
+      </div>
+        
+      <div>
+        <div className={s.contacts}>
+          Contacts: {Object.keys(profile.contacts).map(key => {
+            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />})}
+        </div>
+      </div>
+
+    </div>
+}
+
+
+export const Contact = ({contactTitle, contactValue}) => {
+  return  <div> 
+            <span >
+              {contactTitle}
+            </span>
+            :{contactValue}
+          </div>
+}
+
 export default Profile;
+
 
 
 
