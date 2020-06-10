@@ -1,31 +1,27 @@
 {
   "files": {
-    "main.css": "/MySocialWeb/static/css/main.04591c68.chunk.css",
-    "main.js": "/MySocialWeb/static/js/main.5a1115cc.chunk.js",
-    "main.js.map": "/MySocialWeb/static/js/main.5a1115cc.chunk.js.map",
-    "runtime-main.js": "/MySocialWeb/static/js/runtime-main.8130d27b.js",
-    "runtime-main.js.map": "/MySocialWeb/static/js/runtime-main.8130d27b.js.map",
-    "static/js/2.e50f9c75.chunk.js": "/MySocialWeb/static/js/2.e50f9c75.chunk.js",
-    "static/js/2.e50f9c75.chunk.js.map": "/MySocialWeb/static/js/2.e50f9c75.chunk.js.map",
-    "static/css/3.c9f65675.chunk.css": "/MySocialWeb/static/css/3.c9f65675.chunk.css",
-    "static/js/3.4c32940f.chunk.js": "/MySocialWeb/static/js/3.4c32940f.chunk.js",
-    "static/js/3.4c32940f.chunk.js.map": "/MySocialWeb/static/js/3.4c32940f.chunk.js.map",
-    "static/css/4.c93af2f7.chunk.css": "/MySocialWeb/static/css/4.c93af2f7.chunk.css",
-    "static/js/4.99d2f5f1.chunk.js": "/MySocialWeb/static/js/4.99d2f5f1.chunk.js",
-    "static/js/4.99d2f5f1.chunk.js.map": "/MySocialWeb/static/js/4.99d2f5f1.chunk.js.map",
-    "index.html": "/MySocialWeb/index.html",
-    "precache-manifest.50d04f79c587a50a747ddc3887a26efd.js": "/MySocialWeb/precache-manifest.50d04f79c587a50a747ddc3887a26efd.js",
-    "service-worker.js": "/MySocialWeb/service-worker.js",
-    "static/css/3.c9f65675.chunk.css.map": "/MySocialWeb/static/css/3.c9f65675.chunk.css.map",
-    "static/css/4.c93af2f7.chunk.css.map": "/MySocialWeb/static/css/4.c93af2f7.chunk.css.map",
-    "static/css/main.04591c68.chunk.css.map": "/MySocialWeb/static/css/main.04591c68.chunk.css.map",
-    "static/js/2.e50f9c75.chunk.js.LICENSE.txt": "/MySocialWeb/static/js/2.e50f9c75.chunk.js.LICENSE.txt",
-    "static/js/4.99d2f5f1.chunk.js.LICENSE.txt": "/MySocialWeb/static/js/4.99d2f5f1.chunk.js.LICENSE.txt"
+    "main.css": "/MyWeatherForecast/static/css/main.bfa5f0ec.chunk.css",
+    "main.js": "/MyWeatherForecast/static/js/main.3fce9a8c.chunk.js",
+    "main.js.map": "/MyWeatherForecast/static/js/main.3fce9a8c.chunk.js.map",
+    "runtime-main.js": "/MyWeatherForecast/static/js/runtime-main.13682c84.js",
+    "runtime-main.js.map": "/MyWeatherForecast/static/js/runtime-main.13682c84.js.map",
+    "static/css/2.b125cb96.chunk.css": "/MyWeatherForecast/static/css/2.b125cb96.chunk.css",
+    "static/js/2.b8361125.chunk.js": "/MyWeatherForecast/static/js/2.b8361125.chunk.js",
+    "static/js/2.b8361125.chunk.js.map": "/MyWeatherForecast/static/js/2.b8361125.chunk.js.map",
+    "index.html": "/MyWeatherForecast/index.html",
+    "precache-manifest.e432a5827a995a34e2c0971f6dfc4a4c.js": "/MyWeatherForecast/precache-manifest.e432a5827a995a34e2c0971f6dfc4a4c.js",
+    "service-worker.js": "/MyWeatherForecast/service-worker.js",
+    "static/css/2.b125cb96.chunk.css.map": "/MyWeatherForecast/static/css/2.b125cb96.chunk.css.map",
+    "static/css/main.bfa5f0ec.chunk.css.map": "/MyWeatherForecast/static/css/main.bfa5f0ec.chunk.css.map",
+    "static/js/2.b8361125.chunk.js.LICENSE.txt": "/MyWeatherForecast/static/js/2.b8361125.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/MyWeatherForecast/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/index.sass": "/MyWeatherForecast/static/media/main-bg.c10bd04c.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8130d27b.js",
-    "static/js/2.e50f9c75.chunk.js",
-    "static/css/main.04591c68.chunk.css",
-    "static/js/main.5a1115cc.chunk.js"
+    "static/js/runtime-main.13682c84.js",
+    "static/css/2.b125cb96.chunk.css",
+    "static/js/2.b8361125.chunk.js",
+    "static/css/main.bfa5f0ec.chunk.css",
+    "static/js/main.3fce9a8c.chunk.js"
   ]
 }
